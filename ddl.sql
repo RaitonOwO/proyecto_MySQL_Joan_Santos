@@ -105,21 +105,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`roles` (
-  `id_rol` INT NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `campeones_id_campeon` INT NOT NULL,
-  `campeones_regiones_id_region` INT NOT NULL,
-  `campeones_runas_id_runa` INT NOT NULL,
-  `campeones_skins_id_skin` INT NOT NULL,
-  PRIMARY KEY (`id_rol`),
-  INDEX `fk_roles_campeones1_idx` (`campeones_id_campeon` ASC, `campeones_regiones_id_region` ASC, `campeones_runas_id_runa` ASC, `campeones_skins_id_skin` ASC) VISIBLE,
-  CONSTRAINT `fk_roles_campeones1`
-    FOREIGN KEY (`campeones_id_campeon` , `campeones_regiones_id_region` , `campeones_runas_id_runa` , `campeones_skins_id_skin`)
-    REFERENCES `mydb`.`campeones` (`id_campeon` , `regiones_id_region` , `runas_id_runa` , `skins_id_skin`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE roles (
+    id_rol INT PRIMARY KEY,
+    nombre VARCHAR(50)
+);
+
 
 
 -- -----------------------------------------------------
@@ -272,24 +262,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`campeones_has_objetos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`campeones_has_objetos` (
-  `campeones_id_campeon` INT NOT NULL,
-  `campeones_regiones_id_region` INT NOT NULL,
-  `objetos_id_objeto` INT NOT NULL,
-  PRIMARY KEY (`campeones_id_campeon`, `campeones_regiones_id_region`, `objetos_id_objeto`),
-  INDEX `fk_campeones_has_objetos_objetos1_idx` (`objetos_id_objeto` ASC) VISIBLE,
-  INDEX `fk_campeones_has_objetos_campeones1_idx` (`campeones_id_campeon` ASC, `campeones_regiones_id_region` ASC) VISIBLE,
-  CONSTRAINT `fk_campeones_has_objetos_campeones1`
-    FOREIGN KEY (`campeones_id_campeon` , `campeones_regiones_id_region`)
-    REFERENCES `mydb`.`campeones` (`id_campeon` , `regiones_id_region`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_campeones_has_objetos_objetos1`
-    FOREIGN KEY (`objetos_id_objeto`)
-    REFERENCES `mydb`.`objetos` (`id_objeto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE `campeones_has_objetos` (
+    `campeones_id_campeon` INT NOT NULL,
+    `objetos_id_objeto` INT NOT NULL,
+    PRIMARY KEY (`campeones_id_campeon`, `objetos_id_objeto`),
+    FOREIGN KEY (`campeones_id_campeon`) REFERENCES `campeones`(`id_campeon`) ON DELETE CASCADE,
+    FOREIGN KEY (`objetos_id_objeto`) REFERENCES `objetos`(`id_objeto`) ON DELETE CASCADE
+);
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
