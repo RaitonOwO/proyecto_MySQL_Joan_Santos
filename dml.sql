@@ -158,10 +158,9 @@ INSERT INTO `mydb`.`partidas` (id_partida, duracion, modo_juego, fecha) VALUES
 -- Insertar datos en la tabla `equipos`
 -- -----------------------------------------------------
 INSERT INTO `mydb`.`equipos` (id_equipo, ranking) VALUES
-(1, '1°'),
-(2, '2°'),
-(3, '3°'),
-(4, '4°');
+(1, 'plata'),
+(2, 'plata');
+
 
 -- -----------------------------------------------------
 -- Insertar datos en la tabla `perfil jugadores`
@@ -193,10 +192,16 @@ INSERT INTO `mydb`.`perfil jugadores` (id_perfil, nivel, rango) VALUES
 -- Insertar datos en la tabla `jugadores`
 -- -----------------------------------------------------
 INSERT INTO `mydb`.`jugadores` (id_jugador, roles_id_rol, `estadisticas en juego_id_estadistica`, partidas_id_partida, equipos_id_equipo, `perfil jugadores_id_perfil`, campeones_id_campeon) VALUES
-(1, 2, 1, 1, 1, 1, 1),
-(2, 1, 2, 2, 2, 2, 2),
-(3, 3, 3, 3, 3, 3, 3),
-(4, 4, 4, 4, 4, 4, 4);
+(1, 1, 1, 1, 1, 1, 1),
+(2, 1, 2, 1, 1, 2, 2),
+(3, 2, 1, 1, 2, 3, 3),
+(4, 2, 2, 2, 2, 4, 4),
+(5, 3, 3, 2, 1, 5, 1),
+(6, 3, 1, 2, 1, 6, 2),
+(7, 4, 2, 2, 2, 7, 3),
+(8, 4, 1, 1, 2, 8, 4),
+(9, 1, 2, 2, 1, 9, 1),
+(10, 2, 3, 1, 2, 10, 2);
 
 
 
