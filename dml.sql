@@ -79,3 +79,26 @@ INSERT INTO `equipos` (`id_equipo`, `ranking`) VALUES
 (18, 'Oro IV'),
 (19, 'Plata V'),
 (20, 'Bronce VI');
+
+
+INSERT INTO `perfil jugadores` (`id_perfil`, `nivel`, `rango`) VALUES
+(1, 30, 'Platino'),
+(2, 45, 'Oro'),
+(3, 60, 'Diamante'),
+(4, 25, 'Bronce'),
+(5, 50, 'Maestro'),
+(6, 35, 'Gran Maestro'),
+(7, 70, 'Challenger'),
+(8, 40, 'Platino II'),
+(9, 55, 'Oro III'),
+(10, 20, 'Plata IV'),
+(11, 65, 'Bronce V'),
+(12, 75, 'Diamante I'),
+(13, 30, 'Maestro II'),
+(14, 50, 'Gran Maestro III'),
+(15, 45, 'Challenger IV'),
+(16, 55, 'Platino III'),
+(17, 25, 'Oro IV'),
+(18, 35, 'Plata V'),
+(19, 60, 'Bronce VI'),
+(20, 70, 'Diamante II');
