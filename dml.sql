@@ -57,3 +57,25 @@ INSERT INTO `partidas` (`id_partida`, `duracion`, `modo_juego`, `fecha`) VALUES
 (18, 55, 'Normal', '2024-01-18'),
 (19, 40, 'ARAM', '2024-01-19'),
 (20, 30, 'Clasificatoria', '2024-01-20');
+
+INSERT INTO `equipos` (`id_equipo`, `ranking`) VALUES
+(1, 'Platino'),
+(2, 'Oro'),
+(3, 'Plata'),
+(4, 'Bronce'),
+(5, 'Diamante'),
+(6, 'Maestro'),
+(7, 'Gran Maestro'),
+(8, 'Challenger'),
+(9, 'Platino II'),
+(10, 'Oro III'),
+(11, 'Plata IV'),
+(12, 'Bronce V'),
+(13, 'Diamante I'),
+(14, 'Maestro II'),
+(15, 'Gran Maestro III'),
+(16, 'Challenger IV'),
+(17, 'Platino III'),
+(18, 'Oro IV'),
+(19, 'Plata V'),
+(20, 'Bronce VI');
