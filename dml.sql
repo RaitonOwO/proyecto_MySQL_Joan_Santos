@@ -8,7 +8,16 @@ INSERT INTO `mydb`.`regiones` (id_region, nombre) VALUES
 (2, 'Noxus'),
 (3, 'Ionia'),
 (4, 'Piltover'),
-(5, 'Zuan');
+(5, 'Zaun'),
+(6, 'Freljord'),
+(7, 'Shurima'),
+(8, 'Targon'),
+(9, 'Las Islas de la Sombra'),
+(10, 'Aguas Estancadas'),
+(11, 'El Vacío'),
+(12, 'Bandle City'),
+(13, 'Ixtal');
+
 
 -- -----------------------------------------------------
 -- Insertar datos en la tabla `runas`
@@ -76,26 +85,27 @@ INSERT INTO `mydb`.`skins` (id_skin, nombre, precio, chromas_id_chroma) VALUES
 -- Insertar datos en la tabla `campeones`
 -- -----------------------------------------------------
 INSERT INTO `mydb`.`campeones` (id_campeon, nombre, precio, regiones_id_region, runas_id_runa, skins_id_skin) VALUES
-(1, 'Garen', '6300', 1, 1, 1),
-(2, 'Ahri', '6300', 1, 2, 2),
-(3, 'Zed', '4800', 1, 1, 3),
-(4, 'Lux', '6300', 2, 2, 4),
-(5, 'Jinx', '6300', 2, 3, 5),
-(6, 'Lee Sin', '6300', 3, 1, 6),
-(7, 'Thresh', '6300', 2, 1, 7),
-(8, 'Vayne', '6300', 3, 2, 8),
-(9, 'Yasuo', '6300', 1, 1, 9),
-(10, 'Katarina', '4800', 2, 2, 10),
-(11, 'Darius', '6300', 1, 1, 1),
-(12, 'Morgana', '6300', 1, 2, 2),
-(13, 'Riven', '6300', 2, 1, 3),
-(14, 'Akali', '6300', 2, 1, 4),
-(15, 'Caitlyn', '6300', 2, 3, 5),
-(16, 'Nautilus', '6300', 1, 2, 6),
-(17, 'Rammus', '4800', 1, 1, 7),
-(18, 'Fizz', '6300', 1, 2, 8),
-(19, 'Ezreal', '6300', 3, 3, 9),
-(20, 'Jhin', '6300', 2, 2, 10);
+(1, 'Garen', '6300', 1, 1, 1), 
+(2, 'Ahri', '6300', 3, 2, 2),  
+(3, 'Zed', '4800', 3, 1, 3),    
+(4, 'Lux', '6300', 1, 2, 4),    
+(5, 'Jinx', '6300', 5, 3, 5),   
+(6, 'Lee Sin', '6300', 3, 1, 6), 
+(7, 'Thresh', '6300', 9, 1, 7), 
+(8, 'Vayne', '6300', 1, 2, 8),  
+(9, 'Yasuo', '6300', 3, 1, 9),  
+(10, 'Katarina', '4800', 2, 2, 10), 
+(11, 'Darius', '6300', 2, 1, 11), 
+(12, 'Morgana', '6300', 1, 2, 12), 
+(13, 'Riven', '6300', 2, 1, 13), 
+(14, 'Akali', '6300', 3, 1, 14), 
+(15, 'Caitlyn', '6300', 4, 3, 15),
+(16, 'Nautilus', '6300', 10, 2, 16),
+(17, 'Rammus', '4800', 7, 1, 17), 
+(18, 'Fizz', '6300', 10, 2, 18),
+(19, 'Ezreal', '6300', 4, 3, 19), 
+(20, 'Jhin', '6300', 3, 2, 20);
+
 
 -- -----------------------------------------------------
 -- Insertar datos en la tabla `roles`
@@ -223,7 +233,36 @@ INSERT INTO `mydb`.`objetos` (id_objeto, nombre, tipo, precio, descripcion) VALU
 (1, 'Espada de la Reina', 'Arma', '3200', 'Aumenta el daño físico.'),
 (2, 'Capa de Fuego', 'Defensivo', '2400', 'Otorga resistencia mágica.'),
 (3, 'Botas de Velocidad', 'Movilidad', '1100', 'Aumenta la velocidad de movimiento.'),
-(4, 'Maldición de los Vientos', 'Mágico', '3000', 'Proporciona poder de habilidad.');
+(4, 'Maldición de los Vientos', 'Mágico', '3000', 'Proporciona poder de habilidad.'),
+(5, 'Guantelete de Hielo', 'Defensivo', '2600', 'Genera un área de ralentización.'),
+(6, 'Arco Rúnico', 'Arma', '3400', 'Aumenta la velocidad de ataque y el daño mágico.'),
+(7, 'Coraza del Gigante', 'Defensivo', '2800', 'Incrementa la vida máxima.'),
+(8, 'Sombrero de Hechicero', 'Mágico', '3600', 'Aumenta enormemente el poder de habilidad.'),
+(9, 'Hoja del Rey Arruinado', 'Arma', '3300', 'Roba vida y proporciona daño adicional.'),
+(10, 'Zapatillas de Hechicero', 'Movilidad', '1100', 'Aumenta la velocidad y penetra resistencia mágica.'),
+(11, 'Velo del Hada', 'Mágico', '3100', 'Proporciona un escudo mágico que bloquea la primera habilidad.'),
+(12, 'Cetro de Cristal', 'Mágico', '2900', 'Ralentiza a los enemigos con habilidades.'),
+(13, 'Fuerza de la Naturaleza', 'Defensivo', '2900', 'Aumenta la velocidad de movimiento y resistencia mágica.'),
+(14, 'Pico de Montaña', 'Defensivo', '3200', 'Otorga escudo a un aliado cercano.'),
+(15, 'Guadaña de la Niebla', 'Arma', '3400', 'Proporciona daño físico adicional en ataques básicos.'),
+(16, 'Malla de Espinas', 'Defensivo', '2800', 'Devuelve daño a los atacantes en combate cuerpo a cuerpo.'),
+(17, 'Máscara Abisal', 'Mágico', '3000', 'Reduce la resistencia mágica de los enemigos cercanos.'),
+(18, 'Escudo del Sol', 'Defensivo', '2700', 'Causa daño por segundo a los enemigos cercanos.'),
+(19, 'Filo Infinito', 'Arma', '3700', 'Aumenta el daño crítico significativamente.'),
+(20, 'Báculo del Arcángel', 'Mágico', '3200', 'Proporciona maná y poder de habilidad creciente.'),
+(21, 'Guantelete del Inmortal', 'Defensivo', '3100', 'Aumenta la vida máxima y ralentiza a los enemigos.'),
+(22, 'Reloj de Arena de Zhonya', 'Mágico', '2900', 'Permite volverse invulnerable y no seleccionable por unos segundos.'),
+(23, 'Bastón del Vacío', 'Mágico', '2650', 'Aumenta la penetración mágica.'),
+(24, 'Yelmo Adaptativo', 'Defensivo', '2800', 'Reduce el daño recibido de habilidades repetitivas.'),
+(25, 'Daga de Statikk', 'Arma', '2900', 'Proporciona daño en cadena a enemigos cercanos.'),
+(26, 'Lágrima de la Diosa', 'Mágico', '850', 'Aumenta el maná máximo conforme lanzas habilidades.'),
+(27, 'Baluarte del Guardián', 'Defensivo', '2400', 'Proporciona un escudo a los aliados cercanos.'),
+(28, 'Mandíbula de Malmortius', 'Defensivo', '3100', 'Otorga un escudo cuando los puntos de vida están bajos.'),
+(29, 'Hidra Voraz', 'Arma', '3500', 'Causa daño en área alrededor del campeón al golpear.'),
+(30, 'Malla de Cadena', 'Defensivo', '800', 'Otorga armadura básica.'),
+(31, 'Hoja Crepuscular de Draktharr', 'Arma', '3200', 'Proporciona invisibilidad al salir de combate.'),
+(32, 'Manamune', 'Mágico', '2900', 'Aumenta el daño según el maná máximo acumulado.');
+
 
 -- -----------------------------------------------------
 -- Insertar datos en la tabla `hechizos de invocador`
@@ -238,11 +277,32 @@ INSERT INTO `mydb`.`hechizos de invocador` (id_hechizo, nombre, id_campeon) VALU
 -- Insertar datos en la tabla `campeones_has_objetos`
 -- -----------------------------------------------------
 INSERT INTO `mydb`.`campeones_has_objetos` (campeones_id_campeon, objetos_id_objeto) VALUES
-(1, 1),  -- Campeón 1 tiene Espada de la Reina
-(1, 2),  -- Campeón 1 tiene Capa de Fuego
-(2, 3),  -- Campeón 2 tiene Botas de Velocidad
-(3, 4),  -- Campeón 3 tiene Maldición de los Vientos
-(4, 1),  -- Campeón 4 tiene Espada de la Reina
-(4, 3);  -- Campeón 4 tiene Botas de Velocidad
-
+(1, 1),
+(1, 2),
+(2, 3),
+(3, 4),
+(4, 1),
+(4, 3),
+(5, 2),
+(6, 4),
+(7, 1),
+(8, 2),
+(9, 3),
+(10, 4),
+(11, 1),
+(12, 2),
+(13, 3),
+(14, 4),
+(15, 1),
+(16, 2),
+(17, 3),
+(18, 4),
+(19, 1),
+(20, 2),
+(5, 4),
+(6, 3),
+(7, 2),
+(8, 1),
+(9, 4),
+(10, 3);
 

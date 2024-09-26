@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`objetos` (
   `nombre` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(45) NOT NULL,
   `precio` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(455) NOT NULL,
   PRIMARY KEY (`id_objeto`))
 ENGINE = InnoDB;
 
