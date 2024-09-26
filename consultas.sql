@@ -1,30 +1,69 @@
---consulta 1: esta consulta sirve para listar los campeones con su
-SELECT campeones.nombre AS nombre_campeon, regiones.nombre AS nombre_region
+-- 1. Obtener todos los campeones y sus respectivas regiones.
+SELECT campeones.nombre AS campeon, regiones.nombre AS region
 FROM campeones
-JOIN regiones on campeones.regiones_id_region = regiones.id_region;
+JOIN regiones ON campeones.regiones_id_region = regiones.id_region;
 
---consulta 2: esta consulta sirve para listar los jugadores con las estadisticas que tuvieron en la partida 
-SELECT jugadores.id_jugador, 
-       jugadores.roles_id_rol, 
-       estadisticas.muertes, 
-       estadisticas.asesinatos, 
-       estadisticas.asistencias, 
-       estadisticas.oro_ganado
+-- 2. Listar todos los objetos disponibles en el juego.
+SELECT * FROM objetos;
+
+-- 3. Mostrar los jugadores junto con sus estadísticas en juego.
+SELECT jugadores.id_jugador, estadisticas.asesinatos, estadisticas.muertes, estadisticas.asistencias
 FROM jugadores
-JOIN `estadisticas en juego` AS estadisticas 
-    ON jugadores.`estadisticas en juego_id_estadistica` = estadisticas.id_estadistica;
+JOIN `estadisticas en juego` estadisticas ON jugadores.`estadisticas en juego_id_estadistica` = estadisticas.id_estadistica;
 
---consulta 3: esta consulta lista todos los objetos disponibles 
-SELECT nombre, tipo, precio, descripcion
-FROM objetos;
-
---consulta 4: esta consulta es para ver el historial de un jugador en especifico
-SELECT jugadores.id_jugador,
-       partidas.id_partida,
-       partidas.duracion,
-       partidas.modo_juego,
-       partidas.fecha
+-- 4. Obtener el historial de partidas de un jugador específico.
+SELECT jugadores.id_jugador, partidas.id_partida, partidas.fecha, partidas.duracion, partidas.modo_juego
 FROM jugadores
 JOIN partidas ON jugadores.partidas_id_partida = partidas.id_partida
-WHERE jugadores.id_jugador = 3
-;
+WHERE jugadores.id_jugador = 1;
+
+-- 5. Contar cuántos jugadores hay en cada rol.
+SELECT roles.nombre AS rol, COUNT(jugadores.id_jugador) AS cantidad_jugadores
+FROM jugadores
+JOIN roles ON jugadores.roles_id_rol = roles.id_rol
+GROUP BY roles.nombre;
+
+--6. Consulta para obtener los campeones que más aparecen en las partidas
+SELECT c.nombre AS Campeón, COUNT(j.campeones_id_campeon) AS Veces_usado
+FROM jugadores j
+JOIN campeones c ON j.campeones_id_campeon = c.id_campeon
+GROUP BY c.nombre
+ORDER BY Veces_usado DESC;
+
+--7. Encuentra la partida más larga registrada
+SELECT id_partida, duracion, modo_juego, fecha
+FROM partidas
+ORDER BY duracion DESC
+LIMIT 1;
+
+--8.consulta para ver los jugadores y sus KDA en la partida
+SELECT j.id_jugador, SUM(e.muertes) AS Total_muertes, SUM(e.asesinatos) AS Total_asesinatos, SUM(e.asistencias) AS Total_asistencias
+FROM jugadores j
+JOIN `estadisticas en juego` e ON j.`estadisticas en juego_id_estadistica` = e.id_estadistica
+GROUP BY j.id_jugador;
+
+--9. consulta para los objetos mas caros
+SELECT nombre, tipo, precio
+FROM objetos
+ORDER BY precio DESC
+LIMIT 5;
+
+--10. consulta para los objetos mas ultizados en cada campeon 
+SELECT o.nombre AS Objeto, COUNT(cho.objetos_id_objeto) AS Veces_usado
+FROM campeones_has_objetos cho
+JOIN objetos o ON cho.objetos_id_objeto = o.id_objeto
+JOIN campeones c ON cho.campeones_id_campeon = c.id_campeon
+WHERE c.nombre = 'Jhin' 
+GROUP BY o.nombre
+ORDER BY Veces_usado DESC;
+
+--11. consulta para todos los objetos que sean de defensa
+SELECT nombre FROM objetos WHERE tipo = 'Defensivo';
+
+--12. consulta para ver el total de objetos por categoria 
+SELECT tipo, COUNT(*) AS Total_Objetos FROM objetos GROUP BY tipo;
+
+--13. consulta para todos los objetos con un precio mayor a 3000
+SELECT nombre, precio FROM objetos WHERE precio > 3000;
+
+
