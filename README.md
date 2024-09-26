@@ -38,4 +38,5 @@ A continuación se presentan algunas consultas útiles que puedes realizar en es
 
 ### 1. 📋 **Listar todos los campeones**:
 ```sql
-SELECT * FROM campeones;
+SELECT nombre, tipo, precio, descripcion
+FROM objetos;
