@@ -169,7 +169,7 @@ GROUP BY j.id_jugador
 ORDER BY Partidas_Jugadas DESC
 LIMIT 1;
 
--- 36. Listar los objetos más utilizados en las partidas de un jugador específico.
+-- 34. Listar los objetos más utilizados en las partidas de un jugador específico.
 SELECT o.nombre AS Objeto, COUNT(cho.objetos_id_objeto) AS Veces_usado
 FROM campeones_has_objetos cho
 JOIN objetos o ON cho.objetos_id_objeto = o.id_objeto
@@ -178,27 +178,38 @@ WHERE j.id_jugador = 1 -- Cambia '1' por el ID del jugador
 GROUP BY o.nombre
 ORDER BY Veces_usado DESC;
 
--- 37. Obtener la cantidad de muertes totales en todas las partidas.
+-- 35. Obtener la cantidad de muertes totales en todas las partidas.
 SELECT SUM(e.muertes) AS Total_Muertes
 FROM `estadisticas en juego` e;
 
--- 38. Obtener el total de partidas jugadas por cada campeón.
+-- 36. Obtener el total de partidas jugadas por cada campeón.
 SELECT c.nombre AS Campeon, COUNT(j.campeones_id_campeon) AS Total_Partidas
 FROM campeones c
 JOIN jugadores j ON c.id_campeon = j.campeones_id_campeon
 GROUP BY c.nombre;
 
--- 39. Obtener el promedio de muertes por rol en todas las partidas.
+-- 37. Obtener el promedio de muertes por rol en todas las partidas.
 SELECT r.nombre AS Rol, AVG(e.muertes) AS Promedio_Muertes
 FROM roles r
 JOIN jugadores j ON j.roles_id_rol = r.id_rol
 JOIN `estadisticas en juego` e ON j.`estadisticas en juego_id_estadistica` = e.id_estadistica
 GROUP BY r.nombre;
 
--- 40. Obtener los cinco jugadores con más asistencias en total.
+-- 38. Obtener los cinco jugadores con más asistencias en total.
 SELECT j.id_jugador, SUM(e.asistencias) AS Total_Asistencias
 FROM jugadores j
 JOIN `estadisticas en juego` e ON j.`estadisticas en juego_id_estadistica` = e.id_estadistica
 GROUP BY j.id_jugador
 ORDER BY Total_Asistencias DESC
+LIMIT 5;
+ -- 39.  Contar cuántos hechizos de invocador hay en total:
+SELECT COUNT(*) AS Total_Hechizos FROM `hechizos de invocador`;
+
+-- 40. Listar los campeones con más asesinatos en una sola partida:
+SELECT c.nombre AS Campeón, MAX(e.asesinatos) AS Máximos_Asesinatos
+FROM campeones c
+JOIN jugadores j ON c.id_campeon = j.campeones_id_campeon
+JOIN `estadisticas en juego` e ON j.`estadisticas en juego_id_estadistica` = e.id_estadistica
+GROUP BY c.nombre
+ORDER BY Máximos_Asesinatos DESC
 LIMIT 5;
