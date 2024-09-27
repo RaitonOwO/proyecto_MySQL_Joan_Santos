@@ -40,3 +40,4 @@ A continuación se presentan algunas consultas útiles que puedes realizar en es
 ```sql
 SELECT nombre, tipo, precio, descripcion
 FROM objetos;
+
