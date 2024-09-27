@@ -32,6 +32,11 @@ La base de datos está compuesta por las siguientes tablas:
 3. Ejecutar el archivo SQL para crear todas las tablas de la base de datos.
 4. Insertar los datos necesarios en las tablas correspondientes.
 
+## 📈 Diagrama EER
+A continuacion veran el diagrama EER sobre la base de datos 
+![Diagrama EER](Diagrama_EER.jfif)
+
+
 ## 📝 Consultas SQL Documentadas
 
 A continuación se presentan algunas consultas útiles que puedes realizar en esta base de datos, junto con su explicación:
